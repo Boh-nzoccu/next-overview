@@ -5,7 +5,6 @@ import {
 } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useSpinDelay } from 'spin-delay';
 import { z } from 'zod';
 import Profile from '~/user/components/Profile/Profile';
 import { getAllUsersUid, getUserBasicInfo } from '~/utils';

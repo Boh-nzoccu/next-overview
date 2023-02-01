@@ -14,6 +14,17 @@ type ProfileProps = {
 const Profile = (props: ProfileProps) => {
   return (
     <div className={classes.root}>
+      <small>
+        Last updates:{' '}
+        {Intl.DateTimeFormat('it', {
+          day: '2-digit',
+          month: '2-digit',
+          year: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        }).format(new Date())}
+      </small>
       <Image
         src={props.avatar}
         alt=""

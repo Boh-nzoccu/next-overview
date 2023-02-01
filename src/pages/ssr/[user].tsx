@@ -21,6 +21,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   const user = await getUserBasicInfo(params.data.user);
 
+  // Questo header serve per dire di invalidare la cache dopo 60 secondi
+  context.res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate');
+
   return {
     props: {
       user,
