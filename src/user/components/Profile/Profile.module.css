@@ -1,0 +1,16 @@
+.root {
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.title {
+  padding-bottom: 10px;
+}
+
+.counters {
+  padding-top: 5px;
+}
