@@ -7,7 +7,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { z } from 'zod';
 import Profile from '~/user/components/Profile/Profile';
-import { getAllUsersUid, getUserBasicInfo } from '~/utils';
+import { getUserBasicInfo } from '~/utils';
 
 // Definisco lo schema dei parametri che mi aspetto di ricevere,
 // questo è Zod, una libreria per la validazione dei dati che non ha nulla a che fare con Next.js
@@ -25,7 +25,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
       },
       {
         params: {
-          user: 'user',
+          user: 'ironkiller86',
         },
       },
     ],
@@ -86,6 +86,7 @@ const UserPage = ({ user }: InferGetStaticPropsType<typeof getStaticProps>) => {
         followers={user.followers}
         following={user.following}
         location={user.location}
+        timestampISO={user.timestamp}
         name={user.name || user.uid.toString()}
       />
     </>

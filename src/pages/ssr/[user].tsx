@@ -43,6 +43,7 @@ const UserPage = ({
         <meta name="description" content={`${user.bio}`} />
       </Head>
       <Profile
+        timestampISO={user.timestamp}
         avatar={user.avatar}
         bio={user.bio}
         followers={user.followers}

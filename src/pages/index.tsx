@@ -1,17 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import { useAdditionalLinks } from '~/shared/hooks/useAdditionalLinks';
 
 export default function Home() {
-  const [moreLinks, setMoreLinks] = useState<{ label: string; url: string }[]>(
-    []
-  );
-
-  useEffect(() => {
-    setTimeout(() => {
-      setMoreLinks([{ label: 'Luca', url: '/ssg/morriconeluca' }]);
-    }, 1000);
-  }, []);
+  const additionalLinks = useAdditionalLinks();
+  const [prerendering, setPrerendering] = useState('ssg');
+  
 
   return (
     <>
@@ -22,12 +17,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <div style={{textAlign: 'center', padding: 20}}>
+          <label htmlFor="prere" style={{padding: 10}}>Prerendering</label>
+          <select id="prere" onChange={(evt) => setPrerendering(evt.currentTarget.value)}>
+            <option value="ssg">SSG</option>
+            <option value="ssr">SSR</option>
+          </select>
+        </div>
         <h1 style={{ paddingBottom: '10px' }}>Profili Github</h1>
         <div style={{ display: 'flex', flexFlow: 'column', gap: 10 }}>
-          <Link href="/ssg/irsooti">Daniele</Link>
-          <Link href="/ssg/Giovanna10">Giovanna</Link>
-          {moreLinks.map((link) => (
-            <Link key={link.url} href={link.url}>
+          <Link href={`/${prerendering}/irsooti`}>Daniele</Link>
+          <Link href={`/${prerendering}/Giovanna10`}>Giovanna</Link>
+          <Link href={`/${prerendering}/ironkiller86`}>Donato</Link>
+          {additionalLinks.map((link) => (
+            <Link key={link.url} href={`/${prerendering}/${link.url}`}>
               {link.label}
             </Link>
           ))}

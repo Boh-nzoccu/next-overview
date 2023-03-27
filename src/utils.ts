@@ -14,12 +14,13 @@ export const getUserBasicInfo = async (username: string) => {
       location: data.location,
       followers: data.followers,
       following: data.following,
+      timestamp: new Date().toISOString(),
     };
   } catch (err) {
     return null;
   }
 };
 
-export const getAllUsersUid = async () => {
-  return ['irsooti', 'user'];
+export const getAllUsersUid = () => {
+  return ['irsooti', 'ironkiller86'] as const;
 };
